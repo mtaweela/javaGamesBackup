@@ -12,7 +12,7 @@
 
 <AnchorPane id="AnchorPane" prefHeight="473.0" prefWidth="600.0" style="-fx-background-color: black; -fx-background-radius: 25;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <Button layoutX="544.0" layoutY="18.0" minWidth="34.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="33.0" style="-fx-background-insets: 0,1,2,3,0; -fx-background-radius: 100; -fx-background-color: yellow;" />
+      <Button layoutX="544.0" layoutY="18.0" minWidth="34.0" mnemonicParsing="false" prefHeight="22.0" prefWidth="33.0" style="-fx-background-insets: 0,1,2,3,0; -fx-background-radius: 100; -fx-background-color: yellow;" text="X" />
       <Button layoutX="14.0" layoutY="433.0" mnemonicParsing="false" style="-fx-background-color: yellow; -fx-background-radius: 100;" text="Back" />
       <Separator layoutX="55.0" layoutY="79.0" prefHeight="0.0" prefWidth="485.0" style="-fx-background-radius: 25;">
          <effect>

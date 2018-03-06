@@ -1,6 +1,12 @@
 package snakeGame;
 
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javafx.application.Platform.exit;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
 import javafx.scene.effect.ColorAdjust;
 import javafx.scene.image.Image;
@@ -10,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
 
-public abstract class snakeGameBase extends AnchorPane {
+public class snakeGameBase extends AnchorPane {
 
     protected final Button button;
     protected final Button button0;
@@ -20,7 +26,7 @@ public abstract class snakeGameBase extends AnchorPane {
     protected final ColorAdjust colorAdjust0;
     protected final Text text0;
     protected final Text text1;
-    protected final HBox hBox;
+    protected static HBox hBox;
     protected final ImageView imageView;
     protected final Text text2;
     protected final ImageView imageView0;
@@ -56,6 +62,7 @@ public abstract class snakeGameBase extends AnchorPane {
         button.setPrefHeight(22.0);
         button.setPrefWidth(33.0);
         button.setStyle("-fx-background-insets: 0,1,2,3,0; -fx-background-radius: 100; -fx-background-color: yellow;");
+        button.setText("X");
 
         button0.setLayoutX(14.0);
         button0.setLayoutY(433.0);
@@ -116,7 +123,7 @@ public abstract class snakeGameBase extends AnchorPane {
         imageView.setLayoutY(38.0);
         imageView.setPickOnBounds(true);
         imageView.setPreserveRatio(true);
-        imageView.setImage(new Image(getClass().getResource("../images/apple.png").toExternalForm()));
+//        imageView.setImage(new Image(getClass().getResource("../images/apple.png").toExternalForm()));
 
         text2.setFill(javafx.scene.paint.Color.WHITE);
         text2.setLayoutX(155.0);
@@ -132,7 +139,7 @@ public abstract class snakeGameBase extends AnchorPane {
         imageView0.setLayoutY(38.0);
         imageView0.setPickOnBounds(true);
         imageView0.setPreserveRatio(true);
-        imageView0.setImage(new Image(getClass().getResource("../images/trophy.png").toExternalForm()));
+//        imageView0.setImage(new Image(getClass().getResource("../images/trophy.png").toExternalForm()));
 
         text3.setFill(javafx.scene.paint.Color.WHITE);
         text3.setLayoutX(488.0);
@@ -155,6 +162,19 @@ public abstract class snakeGameBase extends AnchorPane {
         getChildren().add(text2);
         getChildren().add(imageView0);
         getChildren().add(text3);
-
+        
+        
+        /*
+            event handelers
+        */
+        button.setOnAction((ActionEvent e) -> {
+            try {
+                exit();
+            } catch (Exception ex) {
+                Logger.getLogger(Snake.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        });
+        
+        Snake snake = new Snake();
     }
 }

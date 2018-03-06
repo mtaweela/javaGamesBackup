@@ -9,6 +9,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
+import snakeGame.snakeGameBase;
 
 
 //global variables class.
@@ -59,7 +60,12 @@ public class GUIMain extends Application {
             primaryStage.setScene(nameScene);
         });
         
-        
+        mainPage.salButton.setOnAction(e -> {
+            snakeGameBase snakePage = new snakeGameBase();
+            Scene snakeScene = new Scene(snakePage,Color.TRANSPARENT);
+            primaryStage.setScene(snakeScene);
+            
+        });        
         
         namePage.okButton.setOnAction(event -> {
             //set first player name.
