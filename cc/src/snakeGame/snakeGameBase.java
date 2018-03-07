@@ -116,6 +116,8 @@ public class snakeGameBase extends AnchorPane {
         hBox.setPrefHeight(322.0);
         hBox.setPrefWidth(485.0);
         hBox.setStyle("-fx-background-color: yellow;");
+        System.out.println(hBox.getPrefWidth());
+        System.out.println(hBox.getPrefHeight());
 
         imageView.setFitHeight(27.0);
         imageView.setFitWidth(28.0);
