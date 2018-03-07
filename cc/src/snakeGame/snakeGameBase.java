@@ -1,10 +1,13 @@
 package snakeGame;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import static javafx.application.Platform.exit;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.Separator;
@@ -13,8 +16,13 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.Region;
 import javafx.scene.text.Font;
 import javafx.scene.text.Text;
+
+import javafx.scene.shape.Ellipse;
+import javafx.scene.shape.Line;
+import javafx.scene.shape.Rectangle;
 
 public class snakeGameBase extends AnchorPane {
 
@@ -32,7 +40,11 @@ public class snakeGameBase extends AnchorPane {
     protected final ImageView imageView0;
     protected final Text text3;
     protected final ColorAdjust colorAdjust1;
+    protected final Ellipse ellipse;
+    protected List <Rectangle> rectangle = new ArrayList<Rectangle>();;
 
+    protected Label lbl;
+    
     public snakeGameBase() {
 
         button = new Button();
@@ -49,7 +61,10 @@ public class snakeGameBase extends AnchorPane {
         imageView0 = new ImageView();
         text3 = new Text();
         colorAdjust1 = new ColorAdjust();
-
+        ellipse = new Ellipse();
+        
+        
+        
         setId("AnchorPane");
         setPrefHeight(473.0);
         setPrefWidth(600.0);
@@ -118,6 +133,18 @@ public class snakeGameBase extends AnchorPane {
         hBox.setStyle("-fx-background-color: yellow;");
         System.out.println(hBox.getPrefWidth());
         System.out.println(hBox.getPrefHeight());
+        
+        ellipse.setFill(javafx.scene.paint.Color.DODGERBLUE);
+        ellipse.setRadiusX(9.0);
+        ellipse.setRadiusY(5.0);
+        ellipse.setCenterX(100);
+//        ellipse.setTranslateX(hBox.getPrefWidth()/3);
+//        ellipse.setTranslateY(hBox.getPrefHeight()/3);
+        ellipse.setStroke(javafx.scene.paint.Color.BLACK);
+        ellipse.setStrokeType(javafx.scene.shape.StrokeType.INSIDE);
+
+
+        createRec();
 
         imageView.setFitHeight(27.0);
         imageView.setFitWidth(28.0);
@@ -159,6 +186,7 @@ public class snakeGameBase extends AnchorPane {
         getChildren().add(text);
         getChildren().add(text0);
         getChildren().add(text1);
+        hBox.getChildren().add(ellipse);
         getChildren().add(hBox);
         getChildren().add(imageView);
         getChildren().add(text2);
@@ -167,7 +195,7 @@ public class snakeGameBase extends AnchorPane {
         
         
         /*
-            event handelers
+            new code
         */
         button.setOnAction((ActionEvent e) -> {
             try {
@@ -176,7 +204,29 @@ public class snakeGameBase extends AnchorPane {
                 Logger.getLogger(Snake.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
+   
+        lbl = new Label();
+        lbl.setFont(Font.font(48));
+        lbl.setText("");
+        snakeGameBase.hBox.getChildren().add(lbl);
         
-        Snake snake = new Snake();
+        Snake snake = new Snake(ellipse,rectangle);
+    }
+    
+    
+    private void createRec(){
+        rectangle.add(new Rectangle());
+        Rectangle rec;
+        rec = rectangle.get(rectangle.size()-1);
+        rec.setArcHeight(5.0);
+        rec.setArcWidth(5.0);
+        rec.setFill(javafx.scene.paint.Color.DODGERBLUE);
+        rec.setHeight(8.0);
+        rec.setStroke(javafx.scene.paint.Color.BLACK);
+        rec.setStrokeType(javafx.scene.shape.StrokeType.INSIDE);
+        rec.setWidth(15.0);
+//        rec.setTranslateX(hBox.getPrefWidth()/3);
+//        rec.setTranslateY(hBox.getPrefHeight()/3);
+        hBox.getChildren().add(rec);
     }
 }
